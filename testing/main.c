@@ -19,6 +19,14 @@ int main(void)
 	n = printf("%s %0#b", "hello", "hi");
 	printf("\n%i\n", n);
 	puts("");
+	puts("Missing specifier");
+	n = printf("%%+04i", 123, 456);
+	printf("\n%i\n", n);
+	n = printf("%_%+04i", 123, 456);
+	printf("\n%i\n", n);
+	n = printf("%+04%+04i", 123, 456);
+	printf("\n%i\n", n);
+	puts("");
 	puts("Invalid flag");
 	n = printf("%_s", "hello");
 	printf("\n%i\n", n);
