@@ -202,6 +202,8 @@ int main(void)
 	printf("\n%i\n", n);
 	n = printf("_%.8X_", 12345);
 	printf("\n%i\n", n);
+	n = printf("_%.8p_", 12345);
+	printf("\n%i\n", n);
 	n = printf("_%.8c_", 'c');
 	printf("\n%i\n", n);
 	n = printf("_%.8s_", "hello");
