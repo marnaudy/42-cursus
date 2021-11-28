@@ -88,6 +88,8 @@ int main(void)
 	printf("\n%i\n", n);
 	n = printf("_%+X_", 12345);
 	printf("\n%i\n", n);
+	n = printf("_%+p_", 12345);
+	printf("\n%i\n", n);
 	n = printf("_%+c_", 'c');
 	printf("\n%i\n", n);
 	n = printf("_%+s_", "hello");
@@ -103,6 +105,8 @@ int main(void)
 	n = printf("_%#x_", 12345);
 	printf("\n%i\n", n);
 	n = printf("_%#X_", 12345);
+	printf("\n%i\n", n);
+	n = printf("_%#p_", 12345);
 	printf("\n%i\n", n);
 	n = printf("_%#c_", 'c');
 	printf("\n%i\n", n);
@@ -120,6 +124,8 @@ int main(void)
 	printf("\n%i\n", n);
 	n = printf("_% X_", 12345);
 	printf("\n%i\n", n);
+	n = printf("_% p_", 12345);
+	printf("\n%i\n", n);
 	n = printf("_% c_", 'c');
 	printf("\n%i\n", n);
 	n = printf("_% s_", "hello");
@@ -135,6 +141,8 @@ int main(void)
 	n = printf("_%8x_", 12345);
 	printf("\n%i\n", n);
 	n = printf("_%8X_", 12345);
+	printf("\n%i\n", n);
+	n = printf("_%8p_", 12345);
 	printf("\n%i\n", n);
 	n = printf("_%8c_", 'c');
 	printf("\n%i\n", n);
@@ -152,6 +160,8 @@ int main(void)
 	printf("\n%i\n", n);
 	n = printf("_%-8X_", 12345);
 	printf("\n%i\n", n);
+	n = printf("_%-8p_", 12345);
+	printf("\n%i\n", n);
 	n = printf("_%-8c_", 'c');
 	printf("\n%i\n", n);
 	n = printf("_%-8s_", "hello");
@@ -167,6 +177,8 @@ int main(void)
 	n = printf("_%08x_", 12345);
 	printf("\n%i\n", n);
 	n = printf("_%08X_", 12345);
+	printf("\n%i\n", n);
+	n = printf("_%08p_", 12345);
 	printf("\n%i\n", n);
 	n = printf("_%08c_", 'c');
 	printf("\n%i\n", n);
@@ -203,5 +215,12 @@ int main(void)
 	n = printf("_%5#i", 123);
 	printf("\n%i\n", n);
 	n = printf("_%.2 i", 123);
+	printf("\n%i\n", n);
+	puts("");
+	puts("Difference between x & p");
+	char	*str = "hello";
+	n = printf("_%020p_", str);
+	printf("\n%i\n", n);
+	n = printf("_%x_", str);
 	printf("\n%i\n", n);
 }
