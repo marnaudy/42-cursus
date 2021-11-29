@@ -8,24 +8,24 @@ hello hi
 8
 
 Invalid specifier
-hello %b
-8
-hello %#0b
-10
+hello b
+7
+hello b
+7
 
 Missing specifier
 %+04i
 5
-%_+123
-6
 %+04i
 5
+000%+04i
+8
 
 Invalid flag
-%_s
-3
-%$i
-3
+hello
+5
+$i
+2
 
 Duplicate flag
 +123
@@ -36,26 +36,26 @@ Duplicate flag
 Width formatting
 0000000123
 10
-%1 0i
-5
+ 123
+4
 123
 3
-%10i
-4
-%1k0i
-5
+123
+3
+k0i
+3
 
 Precision formatting
 0000000123
 10
-%.1 0i
-6
+ 123
+4
 123
 3
-%.10i
-5
-%.1k0i
-6
+123
+3
+k0i
+3
 
 -0 precedence
 _+00000012345_
@@ -82,8 +82,8 @@ _3039_
 6
 _3039_
 6
-_+0x3039_
-9
+_0x3039_
+8
 _c_
 3
 _hello_
@@ -118,8 +118,8 @@ _3039_
 6
 _3039_
 6
-_ 0x3039_
-9
+_0x3039_
+8
 _c_
 3
 _hello_
@@ -174,9 +174,9 @@ _00003039_
 10
 _0x003039_
 10
-_       c_
+_0000000c_
 10
-_   hello_
+_000hello_
 10
 
 width + precision tests
@@ -192,9 +192,9 @@ _      003039_
 14
 _    0x003039_
 14
-_           c_
+_00000000000c_
 14
-_       hello_
+_0000000hello_
 14
 _hell_
 6
@@ -220,15 +220,15 @@ _hell_
 6
 
 Wrong order
-_%5+i
-5
-_%5#i
-5
-_%.2 i
+_ +123
 6
+_  123
+6
+_ 123
+5
 
 Difference between x & p
-_0x00000055db245d9025_
+_0x00000000010abfbbf6_
 22
-_245d9025_
-10
+_abfbbf6_
+9

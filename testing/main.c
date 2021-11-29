@@ -6,11 +6,11 @@ int main(void)
 
 	puts("");
 	puts("too many/ too few args");
-	n = printf("%s %p", "hello", "hi", "feifj");
+	n = printf("%s %s", "hello", "hi", "feifj");
 	printf("\n%i\n", n);
-	n = printf("%s %i", "hello");
+	n = printf("%s %s", "hello");
 	printf("\n%i\n", n);
-	n = printf("%s %i", "hello", "hi");
+	n = printf("%s %s", "hello", "hi");
 	printf("\n%i\n", n);
 	puts("");
 	puts("Invalid specifier");
