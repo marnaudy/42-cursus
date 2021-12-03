@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 16:40:45 by marnaudy          #+#    #+#             */
-/*   Updated: 2021/12/03 07:44:39 by marnaudy         ###   ########.fr       */
+/*   Updated: 2021/12/03 09:34:34 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,21 @@ void	ft_process_tags(t_tag *array, int size)
 	i = 0;
 	while (i < size)
 	{
-		while (!array[i].is_tag && i < size)
-			i++;
-		if (array[i].specifier == 'c')
+		if (array[i].is_tag && array[i].specifier == 'c')
 			ft_process_c(array + i);
-		if (array[i].specifier == 's')
+		if (array[i].is_tag && array[i].specifier == 's')
 			ft_process_str(array + i);
-		if (array[i].specifier == 'i' || array[i].specifier == 'd')
+		if (array[i].is_tag && (array[i].specifier == 'i'
+				|| array[i].specifier == 'd'))
 			ft_process_int(array + i);
-		if (array[i].specifier == 'u')
+		if (array[i].is_tag && array[i].specifier == 'u')
 			ft_process_unsigned_int(array + i);
-		if (array[i].specifier == 'x' || array[i].specifier == 'X')
+		if (array[i].is_tag && (array[i].specifier == 'x'
+				|| array[i].specifier == 'X'))
 			ft_process_hex(array + i);
-		if (array[i].specifier == 'p')
+		if (array[i].is_tag && array[i].specifier == 'p')
 			ft_process_pointer(array + i);
-		if (array[i].specifier == '%')
+		if (array[i].is_tag && array[i].specifier == '%')
 			ft_process_percentage(array + i);
 		i++;
 	}

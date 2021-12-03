@@ -25,6 +25,8 @@ AR_FLAGS 	=	rcs
 
 all:		${NAME}
 
+bonus:		${NAME}
+
 ${NAME}:	${OBJS}
 			make -C ${LIBDIR}
 			cp ${LIBDIR}/libft.a ./${NAME}
