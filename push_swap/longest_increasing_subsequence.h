@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_utils.h                                       :+:      :+:    :+:   */
+/*   longest_increasing_subsequence.h                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/13 22:25:23 by marnaudy          #+#    #+#             */
-/*   Updated: 2021/12/23 11:30:15 by marnaudy         ###   ########.fr       */
+/*   Created: 2022/01/04 20:27:35 by marnaudy          #+#    #+#             */
+/*   Updated: 2022/01/06 19:02:38 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_UTILS_H
-# define SORT_UTILS_H
+#ifndef LONGEST_INCREASING_SUBSEQUENCE_H
+# define LONGEST_INCREASING_SUBSEQUENCE_H
+
 # include "push_swap_utils.h"
 
-int	sort_3(t_push_swap *data);
+int	is_in_lis(int *lis, int size, int nb);
+int	calculate_lis(t_push_swap *data, int **lis);
 
 #endif
