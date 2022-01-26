@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 20:28:13 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/01/06 18:58:09 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/01/26 12:00:12 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ static int	*calculate_lis_len_arr(t_push_swap *data)
 	len_arr = malloc(sizeof(int) * data->a_size);
 	if (!len_arr)
 		return (NULL);
-	i = 0;
-	while (i < data->a_size)
+	i = data->a_size - 1;
+	while (i >= 0)
 	{
-		j = 0;
+		j = data->a_size;
 		max = 0;
-		while (j < i)
+		while (j > i)
 		{
 			if (len_arr[j] > max && data->a[j] < data->a[i])
 				max = len_arr[j];
-			j++;
+			j--;
 		}
 		len_arr[i] = max + 1;
-		i++;
+		i--;
 	}
 	return (len_arr);
 }
@@ -64,8 +64,30 @@ int	is_in_lis(int *lis, int size, int nb)
 		return (1);
 	if (lis[size / 2] < nb)
 		return (is_in_lis(lis + size / 2 + 1, size - size / 2 - 1, nb));
-	if (lis[size / 2] > nb)
+	else
 		return (is_in_lis(lis, size / 2, nb));
+}
+
+static int	*len_arr_to_lis(t_push_swap *data, int *len_arr, int lis_len)
+{
+	int	i;
+	int	j;
+	int	*lis;
+
+	lis = malloc(sizeof(int) * lis_len);
+	if (!lis)
+		return (NULL);
+	i = lis_len - 1;
+	j = 0;
+	while (i >= 0)
+	{
+		while (j < data->a_size && !(len_arr[j] == i + 1
+				&& (i == lis_len - 1 || data->a[j] < lis[i + 1])))
+			j++;
+		lis[i] = data->a[j];
+		i--;
+	}
+	return (lis);
 }
 
 int	find_lis(t_push_swap *data, int	**lis)
@@ -77,12 +99,9 @@ int	find_lis(t_push_swap *data, int	**lis)
 	if (!len_arr)
 		return (-1);
 	lis_len = calculate_lis_len(len_arr, data->a_size);
-	*lis = malloc(sizeof(int) * lis_len);
-	if (!*lis)
-	{
-		free(len_arr);
-		return (-1);
-	}
+	*lis = len_arr_to_lis(data, len_arr, lis_len);
 	free(len_arr);
+	if (!(*lis))
+		return (-1);
 	return (lis_len);
 }

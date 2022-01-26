@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 20:27:35 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/01/06 19:02:38 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/01/21 16:26:48 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 # include "push_swap_utils.h"
 
 int	is_in_lis(int *lis, int size, int nb);
-int	calculate_lis(t_push_swap *data, int **lis);
+int	find_lis(t_push_swap *data, int **lis);
 
 #endif

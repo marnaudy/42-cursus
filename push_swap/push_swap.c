@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 22:23:04 by marnaudy          #+#    #+#             */
-/*   Updated: 2021/12/16 16:12:46 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/01/26 14:11:55 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	main(int argc, char **argv)
 {
 	t_push_swap	*data;
 
+	if (argc < 2)
+		return (0);
 	data = parse(argc, argv);
 	if (data == 0)
 		return (print_error());

@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 15:58:11 by marnaudy          #+#    #+#             */
-/*   Updated: 2021/12/23 18:18:00 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/01/26 14:20:43 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,25 +49,38 @@ static int	str_to_move(char *str)
 	return (-1);
 }
 
-int	main(int argc, char **argv)
+static int	read_instr(t_push_swap *data)
 {
-	t_push_swap	*data;
-	char		*instr;
-	int			move_nb;
+	char	*instr;
+	int		move_nb;
 
-	data = parse(argc, argv);
-	if (data == 0)
-		return (print_error());
 	instr = get_next_line(STDIN_FILENO);
 	while (instr)
 	{
 		move_nb = str_to_move(instr);
 		free(instr);
 		if (move_nb == -1)
-			return (print_error());
+			return (1);
 		if (move(data, move_nb, 1))
 			return (1);
 		instr = get_next_line(STDIN_FILENO);
+	}
+	return (0);
+}
+
+int	main(int argc, char **argv)
+{
+	t_push_swap	*data;
+
+	if (argc < 2)
+		return (0);
+	data = parse(argc, argv);
+	if (data == 0)
+		return (print_error());
+	if (read_instr(data))
+	{
+		free_everything(data);
+		return (print_error());
 	}
 	if (is_sorted_a(data) && data->b_size == 0)
 		write(1, "OK\n", 3);

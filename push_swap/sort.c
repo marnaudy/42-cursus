@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 22:24:40 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/01/04 20:44:50 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/01/26 13:18:50 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static int	smallest_to_top(t_push_swap *data)
 
 static int	sort_small(t_push_swap *data)
 {
-	int ret;
+	int	ret;
 
 	ret = 0;
 	if (move(data, pb, data->a_size - 3))
@@ -74,12 +74,12 @@ static int	push_to_b(t_push_swap *data)
 	int	lis_size;
 	int	ret;
 
-	i = 1;
 	a_size = data->a_size;
 	ret = 0;
 	lis_size = find_lis(data, &lis);
 	if (lis_size < 0)
 		return (1);
+	i = 0;
 	while (i < a_size)
 	{
 		if (is_in_lis(lis, lis_size, data->a[data->a_size - 1]))
