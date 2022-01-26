@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 20:28:13 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/01/26 12:00:12 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/01/26 14:34:42 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	*calculate_lis_len_arr(t_push_swap *data)
 	i = data->a_size - 1;
 	while (i >= 0)
 	{
-		j = data->a_size;
+		j = data->a_size - 1;
 		max = 0;
 		while (j > i)
 		{
