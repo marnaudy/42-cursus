@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 11:33:18 by marnaudy          #+#    #+#             */
-/*   Updated: 2021/11/24 17:06:58 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/02/08 14:46:46 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,20 @@
 # define LIBFT_H
 # include <stddef.h>
 
+# define BUFFER_SIZE 100
+
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_buffer
+{
+	char	content[BUFFER_SIZE];
+	int		idx;
+	int		size;
+}	t_buffer;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -63,4 +72,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+char	*get_next_line(int fd);
 #endif
