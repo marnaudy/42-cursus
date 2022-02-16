@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 12:02:52 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/02/16 14:43:51 by marnaudy         ###   ########.fr       */
+/*   Created: 2021/11/24 11:27:35 by marnaudy          #+#    #+#             */
+/*   Updated: 2021/11/24 11:40:33 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include <stdlib.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	t_fdf	*data;
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	size;
+	char			*new;
 
-	data = parse(argc, argv);
-	if (!data)
-		return (1);
-	if (data->nb_lin && data->nb_col)
+	size = 0;
+	size = ft_strlen(s1) + ft_strlen(s2);
+	new = malloc(sizeof(char) * (size + 1));
+	if (!new)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s1[i])
 	{
-		isometrify_all(data);
-		display(data);
+		new[i] = s1[i];
+		i++;
 	}
-	free_data(data);
-	return (0);
+	while (s2[j])
+	{
+		new[i + j] = s2[j];
+		j++;
+	}
+	new[i + j] = 0;
+	return (new);
 }

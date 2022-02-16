@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 12:02:52 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/02/16 14:43:51 by marnaudy         ###   ########.fr       */
+/*   Created: 2021/11/24 16:46:15 by marnaudy          #+#    #+#             */
+/*   Updated: 2021/11/24 17:30:30 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	t_fdf	*data;
+	t_list	*next;
 
-	data = parse(argc, argv);
-	if (!data)
-		return (1);
-	if (data->nb_lin && data->nb_col)
+	if (lst == NULL)
+		return ;
+	while (*lst)
 	{
-		isometrify_all(data);
-		display(data);
+		next = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = next;
 	}
-	free_data(data);
-	return (0);
 }

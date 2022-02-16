@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 12:02:52 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/02/16 14:43:51 by marnaudy         ###   ########.fr       */
+/*   Created: 2021/11/24 11:24:28 by marnaudy          #+#    #+#             */
+/*   Updated: 2021/11/24 11:24:33 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include <stdlib.h>
 
-int	main(int argc, char **argv)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	t_fdf	*data;
+	unsigned int	i;
+	unsigned int	size;
+	char			*new;
 
-	data = parse(argc, argv);
-	if (!data)
-		return (1);
-	if (data->nb_lin && data->nb_col)
+	size = 0;
+	while (s[size])
+		size++;
+	new = malloc(sizeof(char) * (size + 1));
+	if (!new)
+		return (NULL);
+	i = 0;
+	while (i < size)
 	{
-		isometrify_all(data);
-		display(data);
+		new[i] = (*f)(i, s[i]);
+		i++;
 	}
-	free_data(data);
-	return (0);
+	new[i] = 0;
+	return (new);
 }

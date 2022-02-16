@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 12:02:52 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/02/16 14:43:51 by marnaudy         ###   ########.fr       */
+/*   Created: 2021/11/24 11:12:04 by marnaudy          #+#    #+#             */
+/*   Updated: 2021/11/24 11:12:53 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include <stddef.h>
 
-int	main(int argc, char **argv)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	t_fdf	*data;
+	size_t	i;
 
-	data = parse(argc, argv);
-	if (!data)
-		return (1);
-	if (data->nb_lin && data->nb_col)
+	if (!dest && !src)
+		return (dest);
+	i = 0;
+	while (i < n)
 	{
-		isometrify_all(data);
-		display(data);
+		((char *) dest)[i] = ((char *) src)[i];
+		i++;
 	}
-	free_data(data);
-	return (0);
+	return (dest);
 }

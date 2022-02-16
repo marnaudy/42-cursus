@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 12:02:52 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/02/16 14:43:51 by marnaudy         ###   ########.fr       */
+/*   Created: 2021/11/24 16:42:06 by marnaudy          #+#    #+#             */
+/*   Updated: 2021/11/24 17:30:29 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include <stdlib.h>
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	t_fdf	*data;
-
-	data = parse(argc, argv);
-	if (!data)
-		return (1);
-	if (data->nb_lin && data->nb_col)
-	{
-		isometrify_all(data);
-		display(data);
-	}
-	free_data(data);
-	return (0);
+	(*del)(lst->content);
+	free(lst);
 }

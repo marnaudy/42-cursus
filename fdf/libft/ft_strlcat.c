@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 12:02:52 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/02/16 14:43:51 by marnaudy         ###   ########.fr       */
+/*   Created: 2021/11/24 11:17:52 by marnaudy          #+#    #+#             */
+/*   Updated: 2021/11/24 11:18:30 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include <stddef.h>
 
-int	main(int argc, char **argv)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	t_fdf	*data;
+	size_t	i;
+	size_t	j;
 
-	data = parse(argc, argv);
-	if (!data)
-		return (1);
-	if (data->nb_lin && data->nb_col)
+	i = 0;
+	while (dst[i] && i < size)
+		i++;
+	j = 0;
+	while (src[j] && i + j + 1 < size)
 	{
-		isometrify_all(data);
-		display(data);
+		dst[i + j] = src[j];
+		j++;
 	}
-	free_data(data);
-	return (0);
+	if (j)
+		dst[i + j] = 0;
+	while (src[j])
+		j++;
+	return (i + j);
 }

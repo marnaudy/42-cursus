@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 12:02:52 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/02/16 14:43:51 by marnaudy         ###   ########.fr       */
+/*   Created: 2021/11/22 21:14:31 by marnaudy          #+#    #+#             */
+/*   Updated: 2021/11/24 11:32:50 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include <stddef.h>
 
-int	main(int argc, char **argv)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	t_fdf	*data;
+	unsigned int	i;
+	int				start;
+	int				inc;
 
-	data = parse(argc, argv);
-	if (!data)
-		return (1);
-	if (data->nb_lin && data->nb_col)
+	if (!src && !dest)
+		return (dest);
+	i = 0;
+	start = 0;
+	inc = 1;
+	if (dest > src)
 	{
-		isometrify_all(data);
-		display(data);
+		start = n - 1;
+		inc = -1;
 	}
-	free_data(data);
-	return (0);
+	while (i < n)
+	{
+		((char *) dest)[start + i * inc] = ((char *) src)[start + i * inc];
+		i++;
+	}
+	return (dest);
 }

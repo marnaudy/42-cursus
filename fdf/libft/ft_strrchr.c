@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 12:02:52 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/02/16 14:43:51 by marnaudy         ###   ########.fr       */
+/*   Created: 2021/11/22 12:33:11 by marnaudy          #+#    #+#             */
+/*   Updated: 2021/11/24 12:19:42 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-
-int	main(int argc, char **argv)
+char	*ft_strrchr(const char *s, int c)
 {
-	t_fdf	*data;
+	unsigned int	i;
+	char			*found;
 
-	data = parse(argc, argv);
-	if (!data)
-		return (1);
-	if (data->nb_lin && data->nb_col)
+	found = 0;
+	i = 0;
+	while (1)
 	{
-		isometrify_all(data);
-		display(data);
+		if (s[i] == (char) c)
+			found = (char *) s + i;
+		if (s[i] == 0)
+			return (found);
+		i++;
 	}
-	free_data(data);
-	return (0);
 }

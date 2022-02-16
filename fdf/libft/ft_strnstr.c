@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 12:02:52 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/02/16 14:43:51 by marnaudy         ###   ########.fr       */
+/*   Created: 2021/11/24 11:21:52 by marnaudy          #+#    #+#             */
+/*   Updated: 2021/11/24 11:22:00 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include <stddef.h>
 
-int	main(int argc, char **argv)
+char	*ft_strnstr(const char	*big, const char *little, size_t len)
 {
-	t_fdf	*data;
+	size_t	i;
+	size_t	j;
 
-	data = parse(argc, argv);
-	if (!data)
-		return (1);
-	if (data->nb_lin && data->nb_col)
+	i = 0;
+	while (big[i] && i < len)
 	{
-		isometrify_all(data);
-		display(data);
+		j = 0;
+		while (big[i + j] == little[j] && little[j] && i + j < len)
+			j++;
+		if (little[j] == 0)
+			return ((char *)(big + i));
+		i++;
 	}
-	free_data(data);
+	if (little[0] == 0)
+		return ((char *) big);
 	return (0);
 }

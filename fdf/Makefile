@@ -6,7 +6,7 @@
 #    By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 14:17:42 by marnaudy          #+#    #+#              #
-#    Updated: 2022/02/02 14:34:55 by marnaudy         ###   ########.fr        #
+#    Updated: 2022/02/16 10:27:20 by marnaudy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,30 @@ NAME	=	fdf
 
 NAME_B	=	fdf_bonus
 
-SRCS	=	main.c
+LIBFT	=	libft/libft.a
 
-SRCS_B	=	
+SRCS	=	fdf.c \
+			parse.c \
+			parse_utils.c \
+			draw_line.c \
+			display_utils.c \
+			display.c \
+			free.c \
+			isometrify.c
 
-HEADERS	=	
+SRCS_B	=	fdf_bonus.c \
+			parse_bonus.c \
+			parse_utils_bonus.c \
+			draw_line_bonus.c \
+			draw_line_utils_bonus.c \
+			display_utils_bonus.c \
+			events_bonus.c \
+			display_bonus.c \
+			free_bonus.c \
+			move_bonus.c
+
+HEADERS	=	fdf.h \
+			fdf_bonus.h
 
 OBJS	=	${SRCS:.c=.o}
 
@@ -32,22 +51,26 @@ RM		=	rm -f
 
 all:		${NAME}
 
-${NAME}:	${OBJS}
-			${CC} ${OBJS} -L ~/minilibx-linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o ${NAME}
+${NAME}:	${OBJS} ${LIBFT}
+			${CC} ${OBJS} -L libft -lft -L ~/minilibx-linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -o ${NAME}
 
-${NAME_B}:	${OBJS_B}
-			${CC} ${OBJS_B} -L ~/minilibx-linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o ${NAME_B}
+${NAME_B}:	${OBJS_B} ${LIBFT}
+			${CC} ${OBJS_B} -L libft -lft -L ~/minilibx-linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -o ${NAME_B}
+
+${LIBFT}:
+			make -C libft
 
 bonus:		${NAME_B}
 
-.c.o:
+%.o:		%.c	${HEADERS}
 			${CC} ${CFLAGS} -I ~/minilibx-linux -c $< -o ${<:.c=.o}
 
 clean:
 			${RM} ${OBJS} ${OBJS_B}
+			make -C libft clean
 
 fclean:		clean
-			${RM} ${NAME} ${NAME_B}
+			${RM} ${NAME} ${NAME_B} ${LIBFT}
 
 re:			fclean all
 

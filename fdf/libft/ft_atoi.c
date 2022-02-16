@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/03 12:02:52 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/02/16 14:43:51 by marnaudy         ###   ########.fr       */
+/*   Created: 2021/11/24 11:29:47 by marnaudy          #+#    #+#             */
+/*   Updated: 2021/11/24 11:30:09 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-
-int	main(int argc, char **argv)
+int	ft_atoi(const char *nptr)
 {
-	t_fdf	*data;
+	int		res;
+	int		i;
+	int		sign;
+	char	*s;
 
-	data = parse(argc, argv);
-	if (!data)
-		return (1);
-	if (data->nb_lin && data->nb_col)
+	res = 0;
+	i = 0;
+	sign = 1;
+	s = (char *) nptr;
+	while (s[i] && (s[i] == ' ' || (s[i] >= 9 && s[i] <= 13)))
+		i++;
+	if (s[i] == '-' || s[i] == '+')
 	{
-		isometrify_all(data);
-		display(data);
+		if (s[i] == '-')
+			sign = -1;
+		i++;
 	}
-	free_data(data);
-	return (0);
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		res = res * 10 + s[i] - '0';
+		i++;
+	}
+	return (res * sign);
 }
