@@ -1,5 +1,4 @@
 #!yasl_linux
-#!
 
 {
 	1:2
@@ -60,3 +59,9 @@ print
 "\n"
 print
 square_root
+][
+!
+"1"
+"0"
+-
+print
