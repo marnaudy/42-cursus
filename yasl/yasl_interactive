@@ -1,0 +1,7 @@
+#!yasl_linux
+
+read:9
+9:@ (
+	eval:9
+	read:9
+)
