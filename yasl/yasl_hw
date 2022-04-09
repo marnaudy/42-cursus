@@ -1,0 +1,7 @@
+#!yasl_linux
+
+#!
+
+"hello world\n"
+
+print

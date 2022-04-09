@@ -1,0 +1,47 @@
+#!yasl_linux
+
+{
+	#
+	#(
+		print
+		"\n"
+		print
+	)
+}	print_all
+
+!
+!
+#
+3
+!= ? (1 exit)
+
+2 ^
+"%"
+%== ? (
+	!
+	!
+	eval
+	2 ^
+	eval
+	%
+	print
+	"\n"
+	print
+	0
+	exit
+)
+!
+2 ^
+" "
++
+3 ^
+" "
++
++
+2 ^
++
+
+eval
+print
+"\n"
+print
