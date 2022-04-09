@@ -1,0 +1,61 @@
+#!yasl_linux
+
+{
+	1:2
+	2:%@ (
+		2:=:3
+		2:=:3
+		3:*:3
+		1:=:3
+		3:%>:0 0:? (
+			"Didn't find square":0
+			0:print
+			"\n":0
+			0:print
+			1:0
+			0:exit
+		)
+		3:%==:0 0:? (
+			"Found square : ":0
+			0:print
+			2:=:0
+			0:print
+			"\n":0
+			0:print
+			2:=:1
+			0:2
+		) : (
+			1:2
+			2:+:2
+		)
+		3:!
+	)
+}	square_root
+
+#!
+
+read
+
+#
+0
+== ? ("Didn't read anything\n" print 1 exit)
+
+0
+%== ? ("Didn't read anything\n" print 1 exit)
+!
+
+4
+
+%%
+0
+!= ? ("Weird number of bytes\n" print 1 exit)
+/
+
+0:=:1
+
+"Image received, nb pixels : "
+print
+print
+"\n"
+print
+square_root
