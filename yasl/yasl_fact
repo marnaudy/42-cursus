@@ -1,0 +1,38 @@
+#!yasl_linux
+
+! !
+
+#
+1
+!= ? ("wrong number of args\n" print 1 exit)
+
+
+0
+%< ? ("invalid input\n" print 1 exit)
+%== ? (
+	!
+	"0":1
+	0
+	0:%]#[:1
+	1:!= ? ("invalid input\n" print 1 exit)
+)
+!
+
+0
++
+0:=:1
+
+1:1
+1:%<= ? ("1 \n" print 0 exit)
+1:!
+
+1:0
+1:%@ (
+	1:=:0
+	0:*:0
+	-1:1
+	1:+:1
+)
+print
+"\n"
+print
