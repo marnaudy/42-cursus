@@ -2,6 +2,7 @@
 
 !
 !
+//stack 1 contains number of items in stack 0
 0:#:1
 1:@
 (

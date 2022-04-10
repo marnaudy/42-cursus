@@ -8,15 +8,54 @@
 
 
 0
-%< ? ("invalid input\n" print 1 exit)
-%== ? (
-	!
-	"0":1
-	0
-	0:%]#[:1
-	1:!= ? ("invalid input\n" print 1 exit)
-)
+%< ? ("Not a positive integer\n" print 1 exit)
 !
+
+{
+	"0":0
+	0:%-:2
+	0:2
+	2:>=:2
+	!
+	"9":0
+	0:%-:2
+	0:2
+	2:<=:2
+	!
+	2:&&
+} is_digit
+
+{
+	0:0
+	%]#[
+	"+":0
+	-
+	0:0
+	==
+	2 ^
+	!
+} first_char_is_plus
+
+{
+	first_char_is_plus ? (
+		[#]
+		-1:0
+		0:+:0
+		1:2
+	) : (
+		[#]
+		0:2
+	)
+
+	#(
+		2:=:0
+		%]#[
+		is_digit ? (1:2 2:+:2) : ("invalid integer\n" print 1 exit)
+		!!
+	)
+}	check_positive_integer
+
+check_positive_integer
 
 0
 +

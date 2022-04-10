@@ -1,16 +1,9 @@
 #!yasl_linux
 
-{
-	#
-	#(
-		print
-		"\n"
-		print
-	)
-}	print_all
+!
+!
 
-!
-!
+//Check number of args
 #
 3
 != ? (1 exit)
@@ -23,6 +16,7 @@
 +
 2 ^
 +
+//Add final whitespace to avoid eval bug
 " "
 +
 

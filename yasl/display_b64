@@ -248,6 +248,7 @@
 	! !
 	//Divide by 4 to get nb of pixels
 	4
+	%% ? ("Number of chars not a mutliple of 4\n" print 1 exit)
 	/
 	0:=:1
 
