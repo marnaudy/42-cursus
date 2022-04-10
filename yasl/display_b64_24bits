@@ -156,40 +156,26 @@
 }	reverse_colours
 
 {
-	6:6
-	6:*:6
-	256:6
-	6:/:6
-}	reduce_color_level
-
-{
-	16:6
+	"\e[48;2;":0
 	//red
-	5:=:6
-	//reduce color level from 256 to 6
-	reduce_color_level
-	36:6
-	6:*:6
-	6:+:6
+	5:=:0
 	5:!
+	"":0
+	0:+:0
+	0:+:0
+	";":0
+	0:+:0
 	//green
-	5:=:6
-	reduce_color_level
-	6:6
-	6:*:6
-	6:+:6
+	5:=:0
 	5:!
+	"":0
+	0:+:0
+	0:+:0
+	";":0
+	0:+:0
 	//blue
-	5:=:6
-	reduce_color_level
-	6:+:6
+	5:=:0
 	5:!
-}	conv_24_to_8_bits
-
-{
-	"\e[48;5;":0
-	6:=:0
-	6:!
 	"":0
 	0:+:0
 	0:+:0
@@ -198,9 +184,9 @@
 	0:print
 	" ":0
 	0:print
-	"\e[48;5;0m":0	
+	"\e[48;2;0;0;0m":0	
 	0:print
-}	display_pixel
+	}	display_pixel
 
 {
 	1:=:3
@@ -214,7 +200,6 @@
 		reverse_b64_int
 		b64_to_byte
 		reverse_colours
-		conv_24_to_8_bits
 		display_pixel
 		1:3
 		3:-:3
