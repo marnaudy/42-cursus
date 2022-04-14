@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 16:07:06 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/04/14 08:36:46 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/04/14 12:06:52 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	simulate(t_global *data, unsigned int philo_nb)
 	if (data->nb_philo == 0)
 		return ;
 	if (data->nb_days == 0)
-		return (philo_is_happy(data));
+		philo_is_happy(data);
 	while (1)
 	{
 		if (try_to_eat(data, philo_nb))
@@ -91,7 +91,7 @@ void	simulate(t_global *data, unsigned int philo_nb)
 		else
 			days++;
 		if (days == data->nb_days && data->nb_days >= 0)
-			return (philo_is_happy(data));
+			philo_is_happy(data);
 		if (philo_sleep(data, philo_nb)
 			|| think(data, philo_nb))
 			return ;

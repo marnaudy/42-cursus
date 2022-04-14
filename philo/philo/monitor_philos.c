@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 18:15:42 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/04/12 17:18:03 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/04/14 12:21:54 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,13 @@ static void	end_simulation(t_global *data)
 	pthread_mutex_unlock(&data->end_mutex);
 }
 
-int	join_threads(t_global *data, t_philo_arg *arg_array, int n)
+int	join_threads(t_global *data, t_philo_arg *arg_array, int n, int dead_philo)
 {
 	int	i;
 
 	end_simulation(data);
+	if (dead_philo >= 0)
+		display_state(data, dead_philo, dead);
 	if (n < 0)
 		n = data->nb_philo;
 	i = 0;
@@ -61,16 +63,13 @@ int	monitor_threads(t_global *data, t_philo_arg *arg_array)
 		while (i < data->nb_philo)
 		{
 			if (time_until_death(data, i) < 0)
-			{
-				display_state(data, i, dead);
-				return (join_threads(data, arg_array, -1));
-			}
+				return (join_threads(data, arg_array, -1, i));
 			if (!philo_is_done(data, i))
 				philos_are_happy = 0;
 			i++;
 		}
 		if (philos_are_happy)
-			return (join_threads(data, arg_array, -1));
+			return (join_threads(data, arg_array, -1, -1));
 		usleep(1000);
 	}
 	return (0);

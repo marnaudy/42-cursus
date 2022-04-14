@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 07:25:18 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/04/07 16:57:14 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/04/14 12:28:11 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ int			display_state(t_global *data, unsigned int philo_nb,
 int			is_the_end(t_global *data);
 void		*philo_is_happy(t_global *data, unsigned int philo_nb);
 void		*simulate(void *arg);
-int			join_threads(t_global *data, t_philo_arg *arg_array, int n);
+int			join_threads(t_global *data, t_philo_arg *arg_array,
+				int n, int dead_philo);
 int			monitor_threads(t_global *data, t_philo_arg *arg_array);
 int			launch_threads(t_global *data);
 

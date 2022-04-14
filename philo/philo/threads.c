@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:22:29 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/04/06 16:34:11 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/04/14 12:23:02 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	launch_threads(t_global *data)
 		if (pthread_create(&data->philo[i].thread, NULL,
 				&simulate, (void *)(arg_array + i)))
 		{
-			join_threads(data, arg_array, i);
+			join_threads(data, arg_array, i, -1);
 			return (-1);
 		}
 		usleep(10);

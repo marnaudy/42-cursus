@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 08:11:42 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/04/14 08:57:46 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/04/14 12:05:21 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,11 @@ static t_global	*init(unsigned int nb_philo)
 static t_global	*arg_error(t_global *data)
 {
 	write(STDERR_FILENO, "Incorrect arguments\n", 20);
-	free(data->pid);
-	free(data);
+	if (data)
+	{
+		free(data->pid);
+		free(data);
+	}
 	return (NULL);
 }
 

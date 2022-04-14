@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 16:07:06 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/04/14 07:46:28 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/04/14 12:27:40 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	think(t_global *data, unsigned int philo_nb)
 	}
 }
 
-static int	eat(t_global *data, unsigned int philo_nb)
+static int	eat(t_global *data, unsigned int philo_nb, int day_nb)
 {
 	if (is_the_end(data))
 		return (-1);
@@ -48,6 +48,8 @@ static int	eat(t_global *data, unsigned int philo_nb)
 		return (-1);
 	if (display_state(data, philo_nb, eating))
 		return (-1);
+	if (day_nb + 1 == data->nb_days)
+		philo_is_happy(data, philo_nb);
 	usleep(data->time_eat * 1000);
 	if (pthread_mutex_unlock(data->philo[philo_nb].left))
 		return (-1);
@@ -56,7 +58,7 @@ static int	eat(t_global *data, unsigned int philo_nb)
 	return (0);
 }
 
-static int	try_to_eat(t_global *data, unsigned int philo_nb)
+static int	try_to_eat(t_global *data, unsigned int philo_nb, int day_nb)
 {
 	if (is_the_end(data))
 		return (-1);
@@ -79,7 +81,7 @@ static int	try_to_eat(t_global *data, unsigned int philo_nb)
 		pthread_mutex_unlock(data->philo[philo_nb].right);
 		return (-1);
 	}
-	eat(data, philo_nb);
+	eat(data, philo_nb, day_nb);
 	return (0);
 }
 
@@ -91,15 +93,12 @@ void	*simulate(void *arg_void)
 	arg = (t_philo_arg *) arg_void;
 	days = 0;
 	if (arg->data->nb_days == 0)
-		return (philo_is_happy(arg->data, arg->philo_nb));
+		philo_is_happy(arg->data, arg->philo_nb);
 	while (1)
 	{
-		if (try_to_eat(arg->data, arg->philo_nb))
+		if (try_to_eat(arg->data, arg->philo_nb, days))
 			return (NULL);
-		else
-			days++;
-		if (days == arg->data->nb_days && arg->data->nb_days >= 0)
-			return (philo_is_happy(arg->data, arg->philo_nb));
+		days++;
 		if (philo_sleep(arg->data, arg->philo_nb)
 			|| think(arg->data, arg->philo_nb))
 			return (NULL);
