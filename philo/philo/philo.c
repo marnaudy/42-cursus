@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 16:07:06 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/04/14 12:27:40 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/04/14 14:44:29 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static int	philo_sleep(t_global *data, unsigned int philo_nb)
 {
-	if (is_the_end(data))
-		return (-1);
 	if (display_state(data, philo_nb, sleeping))
 		return (-1);
 	usleep(data->time_sleep * 1000);
@@ -27,7 +25,7 @@ static int	think(t_global *data, unsigned int philo_nb)
 	int	life_expectancy;
 
 	life_expectancy = time_until_death(data, philo_nb);
-	if (life_expectancy < 0 || is_the_end(data))
+	if (life_expectancy < 0)
 		return (-1);
 	if (display_state(data, philo_nb, thinking))
 		return (-1);
@@ -42,12 +40,13 @@ static int	think(t_global *data, unsigned int philo_nb)
 
 static int	eat(t_global *data, unsigned int philo_nb, int day_nb)
 {
-	if (is_the_end(data))
+	if (update_last_meal(data, philo_nb)
+		|| display_state(data, philo_nb, eating))
+	{
+		pthread_mutex_unlock(data->philo[philo_nb].left);
+		pthread_mutex_unlock(data->philo[philo_nb].right);
 		return (-1);
-	if (update_last_meal(data, philo_nb))
-		return (-1);
-	if (display_state(data, philo_nb, eating))
-		return (-1);
+	}
 	if (day_nb + 1 == data->nb_days)
 		philo_is_happy(data, philo_nb);
 	usleep(data->time_eat * 1000);
@@ -64,7 +63,7 @@ static int	try_to_eat(t_global *data, unsigned int philo_nb, int day_nb)
 		return (-1);
 	if (pthread_mutex_lock(data->philo[philo_nb].left))
 		return (-1);
-	if (is_the_end(data) || display_state(data, philo_nb, fork_pickup))
+	if (display_state(data, philo_nb, fork_pickup))
 	{
 		pthread_mutex_unlock(data->philo[philo_nb].left);
 		return (-1);
@@ -75,7 +74,7 @@ static int	try_to_eat(t_global *data, unsigned int philo_nb, int day_nb)
 		pthread_mutex_unlock(data->philo[philo_nb].left);
 		return (-1);
 	}
-	if (is_the_end(data) || display_state(data, philo_nb, fork_pickup))
+	if (display_state(data, philo_nb, fork_pickup))
 	{
 		pthread_mutex_unlock(data->philo[philo_nb].left);
 		pthread_mutex_unlock(data->philo[philo_nb].right);
@@ -94,6 +93,8 @@ void	*simulate(void *arg_void)
 	days = 0;
 	if (arg->data->nb_days == 0)
 		philo_is_happy(arg->data, arg->philo_nb);
+	if(arg->philo_nb % 2)
+		usleep(3000);
 	while (1)
 	{
 		if (try_to_eat(arg->data, arg->philo_nb, days))

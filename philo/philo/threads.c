@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 12:22:29 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/04/14 12:23:02 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/04/14 13:08:00 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int	launch_threads(t_global *data)
 			join_threads(data, arg_array, i, -1);
 			return (-1);
 		}
-		usleep(10);
 		i++;
 	}
 	return (monitor_threads(data, arg_array));
