@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 08:53:20 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/04/12 11:13:20 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/04/15 15:43:24 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,11 @@ int	init_philo_sem(t_global *data, unsigned int philo_nb)
 	}
 	data->will_to_live_access = sem_open(name, O_CREAT | O_EXCL, 00644, 1);
 	free(name);
-	if (data->fork_access == SEM_FAILED
+	if (data->last_meal_access == SEM_FAILED
 		|| data->will_to_live_access == SEM_FAILED)
 	{
 		unlink_philo_sem(data, philo_nb);
+		write(2, "Philo specific semaphore creation failed\n", 41);
 		return (-1);
 	}
 	return (0);

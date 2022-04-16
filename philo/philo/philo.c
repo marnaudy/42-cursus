@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 16:07:06 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/04/14 14:44:29 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/04/16 15:47:19 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	*simulate(void *arg_void)
 	days = 0;
 	if (arg->data->nb_days == 0)
 		philo_is_happy(arg->data, arg->philo_nb);
-	if(arg->philo_nb % 2)
+	if (arg->philo_nb % 2)
 		usleep(3000);
 	while (1)
 	{

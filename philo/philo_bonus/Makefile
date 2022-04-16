@@ -6,7 +6,7 @@
 #    By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/02 14:17:42 by marnaudy          #+#    #+#              #
-#    Updated: 2022/04/14 09:20:10 by marnaudy         ###   ########.fr        #
+#    Updated: 2022/04/16 19:05:11 by marnaudy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,12 +21,13 @@ SRCS	=	ft_atoi.c \
 			display.c \
 			philo_utils.c \
 			philo.c \
+			philo_monitoring.c \
 			philo_threads.c \
 			main_threads.c \
 			processes.c \
 			main.c
 
-HEADERS	=	philo.h
+HEADERS	=	philo_bonus.h
 
 OBJS	=	${SRCS:.c=.o}
 

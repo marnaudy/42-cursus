@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 07:25:18 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/04/14 08:51:49 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/04/16 19:02:00 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ typedef struct s_global
 	sem_t			*forks;
 	sem_t			*fork_access;
 	sem_t			*philo_is_dead;
+	sem_t			*philo_is_dying;
 	sem_t			*philo_is_happy;
 	sem_t			*end_simulation;
+	sem_t			*print_access;
 	struct timeval	last_meal;
 	sem_t			*last_meal_access;
 	int				will_to_live;
@@ -85,6 +87,8 @@ int			display_state(t_global *data, unsigned int philo_nb,
 int			want_to_live(t_global *data);
 void		philo_is_happy(t_global *data);
 void		simulate(t_global *data, unsigned int philo_nb);
+void		*philo_life_monitoring(void	*data_and_nb);
+void		*philo_end_simulation_monitoring(void *void_data);
 void		launch_philo_threads(t_global *data, unsigned int philo_nb);
 void		launch_main_threads(t_global *data);
 void		launch_processes(t_global *data);

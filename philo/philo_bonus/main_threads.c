@@ -6,7 +6,7 @@
 /*   By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/12 12:43:04 by marnaudy          #+#    #+#             */
-/*   Updated: 2022/04/12 16:49:44 by marnaudy         ###   ########.fr       */
+/*   Updated: 2022/04/16 15:46:54 by marnaudy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	*monitor_philo_happiness(void *void_data)
 			sem_post(data->philo_is_dead);
 			return (NULL);
 		}
-		usleep(10000);
+		usleep(1000);
 	}
 }
 
@@ -41,10 +41,16 @@ static void	*monitor_philo_death(void *void_data)
 	data = (t_global *)void_data;
 	if (sem_wait(data->philo_is_dead))
 		return (NULL);
-	sem_post(data->end_simulation);
 	i = 0;
 	while (i < data->nb_philo)
 	{
+		sem_post(data->end_simulation);
+		i++;
+	}
+	i = 0;
+	while (i < data->nb_philo)
+	{
+		sem_post(data->fork_access);
 		sem_post(data->philo_is_happy);
 		sem_post(data->forks);
 		i++;
