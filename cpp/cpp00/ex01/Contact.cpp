@@ -1,6 +1,10 @@
 #include "Contact.hpp"
 #include <iostream>
 
+Contact::Contact() {}
+
+Contact::~Contact() {}
+
 Contact::Contact(std::string first, std::string last, std::string nick,
 	std::string phone, std::string secret)
 	: first_name(first), last_name(last), nickname(nick), phone_number(phone), secret(secret) {}
@@ -33,7 +37,7 @@ void Contact::set_info(std::string first, std::string last, std::string nick,
 {
 	this->first_name = first;
 	this->last_name = last;
-	this->nickname = nickname;
+	this->nickname = nick;
 	this->phone_number = phone;
 	this->secret = secret;
 }

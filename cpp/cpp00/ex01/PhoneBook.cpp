@@ -7,6 +7,8 @@ PhoneBook::PhoneBook()
 	this->nb_contacts = 0;
 }
 
+PhoneBook::~PhoneBook() {}
+
 void display_header()
 {
 	std::cout << "|     Index|First name| Last name|  Nickname|" << std::endl;
@@ -51,4 +53,15 @@ void PhoneBook::display_phonebook()
 		print_max_10(contacts[i].get_nickname());
 		std::cout << "|" << std::endl;
 	}
+}
+
+void PhoneBook::add_contact(std::string first, std::string last, std::string nick,
+		std::string phone, std::string secret)
+{
+	contacts[nb_contacts % 8].set_info(first, last, nick, phone, secret);
+	nb_contacts++;
+}
+
+int PhoneBook::get_nb_contacts() {
+	return (nb_contacts);
 }
