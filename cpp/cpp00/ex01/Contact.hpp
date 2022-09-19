@@ -3,8 +3,7 @@
 
 #include <string>
 
-class Contact
-{
+class Contact {
 	public:
 		Contact();
 		Contact(std::string first, std::string last, std::string nick,
@@ -13,7 +12,7 @@ class Contact
 		std::string get_first_name();
 		std::string get_last_name();
 		std::string get_nickname();
-		void display_contact();
+		void display();
 		void set_info(std::string first, std::string last, std::string nick,
 			std::string phone, std::string secret);
 	private:

@@ -3,14 +3,13 @@
 
 #include "Contact.hpp"
 
-class PhoneBook
-{
+class PhoneBook {
 	public:
 		PhoneBook();
 		~PhoneBook();
 		void display_phonebook();
-		void add_contact(std::string first, std::string last, std::string nick,
-			std::string phone, std::string secret);
+		void search();
+		void add_contact();
 		int get_nb_contacts();
 	private:
 		Contact contacts[8];
