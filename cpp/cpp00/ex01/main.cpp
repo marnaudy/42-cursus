@@ -10,7 +10,7 @@ int main() {
 		if (std::cin.eof())
 			break;
 		std::cout << "Main menu : choose ADD, SEARCH, or EXIT" << std::endl;
-		std::cin >> input;
+		std::getline(std::cin, input);
 		if (!input.compare("EXIT") || std::cin.eof())
 			break;
 		if (!input.compare("ADD"))

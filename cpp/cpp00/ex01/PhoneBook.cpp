@@ -53,12 +53,17 @@ void PhoneBook::display_phonebook() {
 
 void PhoneBook::search() {
 	int n;
+	std::string str;
 
 	if (std::cin.eof()) {
 		return;
 	}
 	display_phonebook();
-	std::cin >> n;
+	std::getline(std::cin, str);
+	if (str.length() > 0)
+		std::istringstream(str) >> n;
+	else
+		n = -1;
 	if (n < this->nb_contacts && n >= 0) {
 		this->contacts[n % 8].display();
 	}
@@ -70,23 +75,23 @@ void PhoneBook::add_contact() {
 	if (std::cin.eof())
 		return;
 	std::cout << "Enter first name" << std::endl;
-	std::cin >> first;
+	std::getline(std::cin, first);
 	if (std::cin.eof())
 		return;
 	std::cout << "Enter last name" << std::endl;
-	std::cin >> last;
+	std::getline(std::cin, last);
 	if (std::cin.eof())
 		return;
 	std::cout << "Enter nickname" << std::endl;
-	std::cin >> nick;
+	std::getline(std::cin, nick);
 	if (std::cin.eof())
 		return;
 	std::cout << "Enter phone number" << std::endl;
-	std::cin >> phone;
+	std::getline(std::cin, phone);
 	if (std::cin.eof())
 		return;
 	std::cout << "Enter darkest secret" << std::endl;
-	std::cin >> secret;
+	std::getline(std::cin, secret);
 	contacts[nb_contacts % 8].set_info(first, last, nick, phone, secret);
 	nb_contacts++;
 }
