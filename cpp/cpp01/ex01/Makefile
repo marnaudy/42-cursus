@@ -6,7 +6,7 @@
 #    By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 17:15:05 by marnaudy          #+#    #+#              #
-#    Updated: 2022/09/20 16:46:43 by marnaudy         ###   ########.fr        #
+#    Updated: 2022/09/20 17:25:43 by marnaudy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ HEADERS 	=	Zombie.hpp
 
 CXX			=	c++
 
-CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98 -g
+CPPFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 RM			=	rm -f
 
