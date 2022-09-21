@@ -59,6 +59,7 @@ void PhoneBook::search() {
 		return;
 	}
 	display_phonebook();
+	std::cout << "Choose an index" << std::endl;
 	std::getline(std::cin, str);
 	if (str.length() > 0)
 		std::istringstream(str) >> n;
@@ -69,29 +70,38 @@ void PhoneBook::search() {
 	}
 }
 
+std::string getNonEmptyLine() {
+	std::string str;
+	std::getline(std::cin, str);
+	while (!std::cin.eof() && str.length() == 0) {
+		std::getline(std::cin, str);
+	}
+	return (str);
+}
+
 void PhoneBook::add_contact() {
 	std::string	first, last, nick, phone, secret;
 
 	if (std::cin.eof())
 		return;
 	std::cout << "Enter first name" << std::endl;
-	std::getline(std::cin, first);
+	first = getNonEmptyLine();
 	if (std::cin.eof())
 		return;
 	std::cout << "Enter last name" << std::endl;
-	std::getline(std::cin, last);
+	last = getNonEmptyLine();
 	if (std::cin.eof())
 		return;
 	std::cout << "Enter nickname" << std::endl;
-	std::getline(std::cin, nick);
+	nick = getNonEmptyLine();
 	if (std::cin.eof())
 		return;
 	std::cout << "Enter phone number" << std::endl;
-	std::getline(std::cin, phone);
+	phone = getNonEmptyLine();
 	if (std::cin.eof())
 		return;
 	std::cout << "Enter darkest secret" << std::endl;
-	std::getline(std::cin, secret);
+	secret = getNonEmptyLine();
 	contacts[nb_contacts % 8].set_info(first, last, nick, phone, secret);
 	nb_contacts++;
 }
