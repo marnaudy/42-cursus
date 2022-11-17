@@ -9,9 +9,13 @@ int	main(int argc, char **argv) {
 	std::string str;
 	for (int i = 1; argv[i]; i++) {
 		str = std::string(argv[i]);
-		for (unsigned int j = 0; j < str.length(); j++){
-			str[j] = toupper(str[j]);
+		std::string::iterator it;
+		for (it = str.begin(); it != str.end(); it++) {
+			*it = toupper(*it);
 		}
+		// for (unsigned int j = 0; j < str.length(); j++) {
+		// 	str[j] = toupper(str[j]);
+		// }
 		std::cout << str;
 	}
 	std::cout << std::endl;
