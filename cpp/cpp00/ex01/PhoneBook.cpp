@@ -65,8 +65,8 @@ void PhoneBook::search() {
 		std::istringstream(str) >> n;
 	else
 		n = -1;
-	if (n < this->nb_contacts && n >= 0) {
-		this->contacts[n % 8].display();
+	if (n < this->nb_contacts && n >= 0 && n < 8) {
+		this->contacts[n].display();
 	}
 }
 
