@@ -31,9 +31,13 @@ int main(int argc, char **argv) {
 	std::string outfile = infile + ".replace";
 	std::string s1(argv[2]);
 	std::string s2(argv[3]);
+	if (s1.length() == 0) {
+		std::cout << "First string cannot be empty" << std::endl;
+		return (1);
+	}
 	std::ifstream ifs(infile.c_str());
 	ifs.seekg(0, std::ios::end);
-	if (!ifs || ifs.bad() || !ifs.is_open()) {
+	if (!ifs.good() || ifs.bad() || !ifs.is_open()) {
 		std::cout << "Can't open " << infile << std::endl;
 		return (1);
 	}
