@@ -48,10 +48,10 @@ Harl::whine_f Harl::get_whine_function(std::string level) {
 			level_n = i;
 		}
 	}
-	if (this->filter_level < 0) {
+	if (this->filter_level < 0 && level_n == 3) {
 		return (&Harl::gibberish);
 	}
-	if (this->filter_level > level_n) {
+	if (this->filter_level > level_n || this->filter_level < 0) {
 		return (&Harl::quiet);
 	}
 	switch (level_n) {

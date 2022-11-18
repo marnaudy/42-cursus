@@ -8,6 +8,7 @@ int main() {
 	randomChump("Stack");
 	std::cout << "Creating zombie on heap" << std::endl;
 	Zombie *myZombie = newZombie("Heap");
+	myZombie->announce();
 	std::cout << "Freeing heap memory" << std::endl;
 	delete myZombie;
 }
