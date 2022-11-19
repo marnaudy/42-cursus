@@ -24,3 +24,25 @@ const Fixed Point::getX() const {
 const Fixed Point::getY() const {
 	return (_y);
 }
+
+Point::side Point::sideOfLine(const Point a, const Point b) const {
+	//Deal with vertical lines
+	if (a.getX() == b.getX()) {
+		if (a.getX() == _x) {
+			return (on);
+		}
+		if (a.getX() < _x) {
+			return (below);
+		}
+		return (above);
+	}
+	Fixed gradient((b.getY() - a.getY()) / (b.getX() - a.getX()));
+	Fixed yAtIntercept(a.getY() + gradient * (_x - a.getX()));
+	if (_y == yAtIntercept) {
+		return (on);
+	}
+	if (_y < yAtIntercept) {
+		return (below);
+	}
+	return (above);
+}

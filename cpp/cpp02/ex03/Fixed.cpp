@@ -49,43 +49,43 @@ int Fixed::toInt() const {
 	return (n);
 }
 
-bool Fixed::operator>(const Fixed &rhs) {
+bool Fixed::operator>(const Fixed &rhs) const {
 	return (_rawBits > rhs.getRawBits());
 }
 
-bool Fixed::operator<(const Fixed &rhs) {
+bool Fixed::operator<(const Fixed &rhs) const {
 	return (_rawBits < rhs.getRawBits());
 }
 
-bool Fixed::operator>=(const Fixed &rhs) {
+bool Fixed::operator>=(const Fixed &rhs) const {
 	return (_rawBits >= rhs.getRawBits());
 }
 
-bool Fixed::operator<=(const Fixed &rhs) {
+bool Fixed::operator<=(const Fixed &rhs) const {
 	return (_rawBits <= rhs.getRawBits());
 }
 
-bool Fixed::operator==(const Fixed &rhs) {
+bool Fixed::operator==(const Fixed &rhs) const {
 	return (_rawBits == rhs.getRawBits());
 }
 
-bool Fixed::operator!=(const Fixed &rhs) {
+bool Fixed::operator!=(const Fixed &rhs) const {
 	return (_rawBits != rhs.getRawBits());
 }
 
-Fixed Fixed::operator+(const Fixed &rhs) {
+Fixed Fixed::operator+(const Fixed &rhs) const {
 	Fixed res = *this;
 	res.setRawBits(_rawBits + rhs.getRawBits());
 	return (res);
 }
 
-Fixed Fixed::operator-(const Fixed &rhs) {
+Fixed Fixed::operator-(const Fixed &rhs) const {
 	Fixed res = *this;
 	res.setRawBits(_rawBits - rhs.getRawBits());
 	return (res);
 }
 
-Fixed Fixed::operator*(const Fixed &rhs) {
+Fixed Fixed::operator*(const Fixed &rhs) const {
 	Fixed res;
 	long int newRawBits = _rawBits;
 	newRawBits *= rhs.getRawBits();
@@ -94,7 +94,7 @@ Fixed Fixed::operator*(const Fixed &rhs) {
 	return (res);
 }
 
-Fixed Fixed::operator/(const Fixed &rhs) {
+Fixed Fixed::operator/(const Fixed &rhs) const {
 	if (rhs.getRawBits() == 0) {
 		std::cout << "Division by 0 isn't possible" << std::endl;
 		return (Fixed());

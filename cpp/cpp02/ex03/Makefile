@@ -6,7 +6,7 @@
 #    By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 17:15:05 by marnaudy          #+#    #+#              #
-#    Updated: 2022/11/19 04:17:07 by marnaudy         ###   ########.fr        #
+#    Updated: 2022/11/19 05:18:48 by marnaudy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME		=	bsp_test
 
 SRCS		=	Fixed.cpp \
 				Point.cpp \
+				bsp.cpp \
 				main.cpp
 
 OBJS		=	${SRCS:.cpp=.o}
