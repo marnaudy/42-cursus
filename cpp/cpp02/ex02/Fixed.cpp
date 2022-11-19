@@ -103,6 +103,13 @@ Fixed Fixed::operator/(const Fixed &rhs) {
 	long int newRawBits = _rawBits;
 	newRawBits = newRawBits << _nFbits;
 	newRawBits /= rhs.getRawBits();
+	int remainder = (_rawBits << _nFbits) - newRawBits * rhs.getRawBits();
+	if (remainder > rhs.getRawBits() / 2 || remainder < rhs.getRawBits() / -2) {
+		if (newRawBits >= 0)
+			newRawBits++;
+		else
+			newRawBits--;
+	}
 	res.setRawBits(newRawBits);
 	return (res);
 }
