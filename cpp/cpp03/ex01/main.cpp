@@ -19,4 +19,6 @@ int main() {
 	bob2.beRepaired(1);
 	bob2.attack("a fly");
 	bob2.guardGate();
+	bob2 = bob;
+	bob2.setName("Bob2");
 }
