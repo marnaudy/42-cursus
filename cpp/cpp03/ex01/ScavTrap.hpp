@@ -14,6 +14,10 @@ public:
 	//Actions
 	void attack(const std::string &target);
 	void guardGate();
+private:
+	static const int healthInit = 100;
+	static const int energyInit = 50;
+	static const int attackInit = 20;
 };
 
 #endif

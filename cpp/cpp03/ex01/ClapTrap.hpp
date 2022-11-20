@@ -31,6 +31,9 @@ private:
 	unsigned int _hitPoints;
 	unsigned int _energyPoints;
 	unsigned int _attackDamage;
+	static const int healthInit = 10;
+	static const int energyInit = 10;
+	static const int attackInit = 0;
 };
 
 #endif
