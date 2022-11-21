@@ -48,7 +48,7 @@ void ScavTrap::attack(const std::string &target) {
 	std::cout << " deals a huge blow to " << target;
 	std::cout << ", causing " << ClapTrap::getAttackDamage();
 	std::cout << " points of damage !" << std::endl;
-	ClapTrap::spendEnergy(1);
+	ClapTrap::setEnergyPoints(ClapTrap::getEnergyPoints() - 1);
 }
 
 void ScavTrap::guardGate() {

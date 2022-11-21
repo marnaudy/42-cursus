@@ -6,7 +6,7 @@ int main() {
 	bob.attack("a fly");
 	bob.beRepaired(2);
 	bob.guardGate();
-	bob.spendEnergy(100);
+	bob.setEnergyPoints(0);
 	bob.attack("a fly");
 	bob.beRepaired(2);
 

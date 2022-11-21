@@ -133,11 +133,3 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	_hitPoints += amount;
 	_energyPoints--;
 }
-
-void ClapTrap::spendEnergy(unsigned int amount) {
-	if (_energyPoints > amount) {
-		_energyPoints -= amount;
-	} else {
-		_energyPoints = 0;
-	}
-}

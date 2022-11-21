@@ -10,7 +10,7 @@ int main() {
 		bob.attack("a fly");
 		bob.beRepaired(2);
 		bob.guardGate();
-		bob.spendEnergy(100);
+		bob.setEnergyPoints(0);
 		bob.attack("a fly");
 		bob.beRepaired(2);
 
@@ -35,7 +35,7 @@ int main() {
 		billy.attack("a fly");
 		billy.beRepaired(2);
 		billy.highFivesGuys();
-		billy.spendEnergy(100);
+		billy.setEnergyPoints(0);
 		billy.attack("a fly");
 		billy.beRepaired(2);
 
@@ -61,7 +61,7 @@ int main() {
 		brandon.beRepaired(2);
 		brandon.guardGate();
 		brandon.highFivesGuys();
-		brandon.spendEnergy(100);
+		brandon.setEnergyPoints(0);
 		brandon.attack("a fly");
 		brandon.beRepaired(2);
 

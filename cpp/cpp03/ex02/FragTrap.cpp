@@ -48,7 +48,7 @@ void FragTrap::attack(const std::string &target) {
 	std::cout << " aggressively high-fives " << target;
 	std::cout << ", causing " << ClapTrap::getAttackDamage();
 	std::cout << " points of damage !" << std::endl;
-	ClapTrap::spendEnergy(1);
+	ClapTrap::setEnergyPoints(ClapTrap::getEnergyPoints() - 1);
 }
 
 void FragTrap::highFivesGuys() {
