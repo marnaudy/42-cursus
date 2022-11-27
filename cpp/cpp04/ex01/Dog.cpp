@@ -3,19 +3,23 @@
 Dog::Dog() {
 	std::cout << "Dog default constructor called" << std::endl;
 	_type = "Dog";
+	_brain = new Brain;
 }
 
 Dog::Dog(const Dog &other) : Animal() {
+	_brain = new Brain;
 	*this = other;
 }
 
 Dog &Dog::operator=(const Dog &rhs) {
 	_type = rhs.getType();
+	*_brain = *(rhs._brain);
 	return (*this);
 }
 
 Dog::~Dog() {
 	std::cout << "Dog destructor called" << std::endl;
+	delete _brain;
 }
 
 //Actions

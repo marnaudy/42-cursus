@@ -10,7 +10,7 @@ public:
 	WrongCat();
 	WrongCat(const WrongCat &other);
 	WrongCat &operator=(const WrongCat &rhs);
-	~WrongCat();
+	virtual ~WrongCat();
 	//Actions
 	virtual void makeSound() const;
 };

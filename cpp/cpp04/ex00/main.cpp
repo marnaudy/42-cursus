@@ -14,6 +14,9 @@ int main()
 		i->makeSound(); //will output the cat sound!
 		j->makeSound();
 		meta->makeSound();
+		delete i;
+		delete j;
+		delete meta;
 	}
 	{
 		std::cout << std::endl;
@@ -23,6 +26,8 @@ int main()
 		std::cout << i->getType() << " " << std::endl;
 		i->makeSound(); //will output the animal sound!
 		meta->makeSound();
+		delete i;
+		delete meta;
 	}
 	return 0;
 }

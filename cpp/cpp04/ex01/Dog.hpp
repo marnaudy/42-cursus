@@ -4,6 +4,7 @@
 #	include <iostream>
 #	include <string>
 #	include "Animal.hpp"
+#	include "Brain.hpp"
 
 class Dog : public Animal{
 public:
@@ -13,6 +14,8 @@ public:
 	virtual ~Dog();
 	//Actions
 	virtual void makeSound() const;
+private:
+	Brain *_brain;
 };
 
 #endif

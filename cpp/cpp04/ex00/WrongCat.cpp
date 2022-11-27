@@ -5,7 +5,7 @@ WrongCat::WrongCat() {
 	_type = "WrongCat";
 }
 
-WrongCat::WrongCat(const WrongCat &other) {
+WrongCat::WrongCat(const WrongCat &other) : WrongAnimal() {
 	*this = other;
 }
 

@@ -6,7 +6,7 @@
 #    By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 17:15:05 by marnaudy          #+#    #+#              #
-#    Updated: 2022/11/23 08:42:12 by marnaudy         ###   ########.fr        #
+#    Updated: 2022/11/23 07:14:48 by marnaudy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,19 +14,17 @@
 NAME		=	polymorphism
 
 SRCS		=	Animal.cpp \
+				Brain.cpp \
 				Cat.cpp \
 				Dog.cpp \
-				WrongAnimal.cpp \
-				WrongCat.cpp \
 				main.cpp
 
 OBJS		=	${SRCS:.cpp=.o}
 
 HEADERS 	=	Animal.hpp \
+				Brain.hpp \
 				Cat.hpp \
-				Dog.hpp \
-				WrongAnimal.hpp \
-				WrongCat.hpp
+				Dog.hpp
 
 CXX			=	c++
 
