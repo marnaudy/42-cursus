@@ -1,0 +1,24 @@
+#ifndef DOG_HPP
+#	define DOG_HPP
+
+#	include <iostream>
+#	include <string>
+#	include "AAnimal.hpp"
+#	include "Brain.hpp"
+
+class Dog : public AAnimal{
+public:
+	Dog();
+	Dog(const Dog &other);
+	Dog &operator=(const Dog &rhs);
+	virtual ~Dog();
+	//Actions
+	virtual void makeSound() const;
+	void newIdea(const std::string str);
+	void clearBrain();
+	void displayIdeas() const;
+private:
+	Brain *_brain;
+};
+
+#endif
