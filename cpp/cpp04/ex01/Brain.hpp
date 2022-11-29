@@ -13,6 +13,7 @@ public:
 	//Actions
 	void newIdea(const std::string str);
 	void clearBrain();
+	void displayIdeas() const;
 private:
 	std::string _ideas[100];
 };

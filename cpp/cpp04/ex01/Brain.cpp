@@ -23,7 +23,7 @@ Brain::~Brain() {
 
 void Brain::newIdea(const std::string str) {
 	int i = 0;
-	while (i < 100 && _ideas[i].length() == 0) {
+	while (i < 100 && _ideas[i].length() != 0) {
 		i++;
 	}
 	if (i == 100) {
@@ -36,5 +36,13 @@ void Brain::newIdea(const std::string str) {
 void Brain::clearBrain() {
 	for (int i = 0; i < 100; i++) {
 		_ideas[i] = "";
+	}
+}
+
+void Brain::displayIdeas() const {
+	for (int i = 0; i < 100; i++) {
+		if (_ideas[i].length()) {
+			std::cout << i << " : " << _ideas[i] << std::endl;
+		}
 	}
 }

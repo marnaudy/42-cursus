@@ -14,6 +14,9 @@ public:
 	virtual ~Dog();
 	//Actions
 	virtual void makeSound() const;
+	void newIdea(const std::string str);
+	void clearBrain();
+	void displayIdeas() const;
 private:
 	Brain *_brain;
 };

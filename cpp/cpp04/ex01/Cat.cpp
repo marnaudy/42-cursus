@@ -27,3 +27,15 @@ Cat::~Cat() {
 void Cat::makeSound() const {
 	std::cout << "Meow" << std::endl;
 }
+
+void Cat::newIdea(const std::string str) {
+	_brain->newIdea(str);
+}
+
+void Cat::clearBrain() {
+	_brain->clearBrain();
+}
+
+void Cat::displayIdeas() const{
+	_brain->displayIdeas();
+}
