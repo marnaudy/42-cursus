@@ -13,6 +13,9 @@ Character::Character(const std::string &name) : _name(name) {
 }
 
 Character::Character(const Character &other) {
+	for (int i = 0; i < 4; i++) {
+		_inventory[i] = NULL;
+	}
 	*this = other;
 }
 

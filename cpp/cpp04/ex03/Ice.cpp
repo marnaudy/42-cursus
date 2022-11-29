@@ -2,7 +2,7 @@
 
 Ice::Ice() : AMateria("ice") {}
 
-Ice::Ice(const Ice &other) {
+Ice::Ice(const Ice &other) : AMateria() {
 	*this = other;
 }
 

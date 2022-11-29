@@ -7,6 +7,9 @@ MateriaSource::MateriaSource() {
 }
 
 MateriaSource::MateriaSource(const MateriaSource &other) {
+	for (int i = 0; i < 4; i++) {
+		_templates[i] = NULL;
+	}
 	*this = other;
 }
 

@@ -7,7 +7,7 @@ int main()
 {
 	{
 		IMateriaSource* src = new MateriaSource();
-		src.learnMateria(new Ice());
+		src->learnMateria(new Ice());
 		src->learnMateria(new Cure());
 		ICharacter* me = new Character("me");
 		AMateria* tmp;
@@ -39,10 +39,12 @@ int main()
 		me.use(1, bob);
 
 		Character me2 = Character(me);
-		me2.unequip(0);
-		me2.unequip(1);
+		tmp = src.createMateria("ice");
+		me2.equip(tmp);
 		me.use(0, bob);
 		me.use(1, bob);
+		me2.unequip(1);
+		delete tmp;
 		
 		MateriaSource src2 = src;
 		src.learnMateria(new Cure());
@@ -51,6 +53,14 @@ int main()
 		me.use(1, bob);
 
 		std::cout << std::endl;
-		std::cout << "Filling inventories and templates"		
+		std::cout << "Filling inventories and templates" << std::endl;
+		tmp = src.createMateria("cure");
+		me.equip(tmp);
+		tmp = src.createMateria("cure");
+		me.equip(tmp);
+		tmp = src.createMateria("cure");
+		me.equip(tmp);
+		delete tmp;
+
 	}
 }

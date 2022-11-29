@@ -2,7 +2,7 @@
 
 Cure::Cure() : AMateria("cure") {}
 
-Cure::Cure(const Cure &other) {
+Cure::Cure(const Cure &other) : AMateria() {
 	*this = other;
 }
 
