@@ -6,7 +6,7 @@
 #    By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 17:15:05 by marnaudy          #+#    #+#              #
-#    Updated: 2022/11/29 16:43:56 by marnaudy         ###   ########.fr        #
+#    Updated: 2022/12/01 10:51:08 by marnaudy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ HEADERS 	=	AMateria.hpp \
 
 CXX			=	c++
 
-CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98 -g
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98
 
 RM			=	rm -f
 
