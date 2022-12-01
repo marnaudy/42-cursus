@@ -11,7 +11,7 @@ int main() {
 		bob.incrementGrade();
 	}
 	catch(const std::exception& e) {
-		std::cerr << e.what() << '\n';
+		std::cout << e.what() << std::endl;
 	}
 	try {
 		Bureaucrat bill(150, "Bill");
@@ -23,7 +23,7 @@ int main() {
 		bill.decrementGrade();
 	}
 	catch(const std::exception& e) {
-		std::cerr << e.what() << '\n';
+		std::cout << e.what() << std::endl;
 	}
 	try	{
 		std::cout << "Trying grade 0" << std::endl;
@@ -31,7 +31,7 @@ int main() {
 		std::cout << billybob << std::endl;
 	}
 	catch(const std::exception& e) {
-		std::cerr << e.what() << '\n';
+		std::cout << e.what() << std::endl;
 	}
 	try	{
 		std::cout << "Trying grade 151" << std::endl;
@@ -39,7 +39,7 @@ int main() {
 		std::cout << billybob << std::endl;
 	}
 	catch(const std::exception& e) {
-		std::cerr << e.what() << '\n';
+		std::cout << e.what() << std::endl;
 	}
 	std::cout << "Testing name overwrite" << std::endl;
 	const std::string name = "Alice the third, haver of long name";
