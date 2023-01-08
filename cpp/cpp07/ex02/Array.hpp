@@ -31,6 +31,7 @@ public :
 		for (unsigned int i = 0; i < _size; i++) {
 			_array[i] = rhs._array[i];
 		}
+		return (*this);
 	}
 	T &operator[](unsigned int n) {
 		if (n >= _size) {
