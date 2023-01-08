@@ -19,8 +19,6 @@ std::string trimWS(const std::string &str) {
 		return ("");
 	}
 	size_t end = str.find_last_not_of(" \f\t\n\r\v");
-	// std::string trimmed = str.substr(start, end - start + 1);
-	// std::cout << '_' << trimmed << '_' << std::endl;
 	return (str.substr(start, end - start + 1));
 }
 
@@ -33,6 +31,9 @@ bool ScalarConverter::isInt() const {
 		return (false);
 	}
 	std::string trimmed = trimWS(_str);
+	if (trimmed[0] == '+' || trimmed[0] == '-') {
+		trimmed = trimmed.substr(1, trimmed.length() - 1);
+	}
 	return (trimmed.length() != 0
 		&& trimmed.find_first_not_of("0123456789") == std::string::npos);
 }
@@ -109,7 +110,7 @@ void ScalarConverter::print() const {
 		else if (value >= 32.0 && value < 127.0)
 			std::cout << '\'' << static_cast<char>(value) << '\'' << std::endl;
 		else
-			std::cout << "non displayable" << std::endl;
+			std::cout << "Non displayable" << std::endl;
 	}
 	if (type == unknown_type)
 		std::cout << "impossible" << std::endl;
@@ -146,5 +147,4 @@ void ScalarConverter::print() const {
 			std::cout << ".0";
 		std::cout << std::endl;
 	}
-	
 }
