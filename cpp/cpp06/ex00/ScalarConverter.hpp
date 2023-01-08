@@ -2,6 +2,7 @@
 #define SCALARCONVERTER_HPP
 
 #include <cstdlib>
+#include <cmath>
 #include <string>
 #include <iostream>
 
@@ -26,10 +27,9 @@ public:
 	bool isDouble() const;
 	const std::string &getStr() const;
 	enum type_e getType() const;
+	void print() const;
 private:
 	std::string _str;
 };
-
-std::ostream &operator<<(std::ostream &os, const ScalarConverter &conv);
 
 #endif

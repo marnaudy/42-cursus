@@ -46,6 +46,9 @@ bool ScalarConverter::isFloat() const {
 		|| trimmed == "+inff" || trimmed == "-inff") {
 		return (true);
 	}
+	if (trimmed[0] == '+' || trimmed[0] == '-') {
+		trimmed = trimmed.substr(1, trimmed.length() - 1);
+	}
 	size_t decimalPos = trimmed.find('.');
 	return (trimmed.length() != 0
 		&& trimmed[trimmed.length() - 1] == 'f'
@@ -64,6 +67,9 @@ bool ScalarConverter::isDouble() const {
 	if (trimmed == "nan" || trimmed == "inf"
 		|| trimmed == "+inf" || trimmed == "-inf") {
 		return (true);
+	}
+	if (trimmed[0] == '+' || trimmed[0] == '-') {
+		trimmed = trimmed.substr(1, trimmed.length() - 1);
 	}
 	size_t decimalPos = trimmed.find('.');
 	return (trimmed.length() != 0
@@ -90,22 +96,55 @@ enum type_e ScalarConverter::getType() const {
 	return (unknown_type);
 }
 
-std::ostream &operator<<(std::ostream &os, const ScalarConverter &conv) {
-	type_e type = conv.getType();
-	os << type << std::endl;
-	double value = atof(conv.getStr().c_str());
-	os << "char: ";
+void ScalarConverter::print() const {
+	type_e type = this->getType();
+	double value = atof(_str.c_str());
+	//Conversion to char
+	std::cout << "char: ";
 	if (type == char_type)
-		os << conv.getStr() << std::endl;
+		std::cout << '\'' <<_str << '\'' << std::endl;
 	if (type == int_type || type == float_type || type == double_type) {
-		if (value > 127.0 || value < 0.0)
-			os << "impossible" << std::endl;
+		if (value > 127.0 || value < 0.0 || std::isnan(value))
+			std::cout << "impossible" << std::endl;
 		else if (value >= 32.0 && value < 127.0)
-			os << static_cast<char>(value) << std::endl;
+			std::cout << '\'' << static_cast<char>(value) << '\'' << std::endl;
 		else
-			os << "non displayable" << std::endl;
+			std::cout << "non displayable" << std::endl;
 	}
 	if (type == unknown_type)
-		os << "impossible" << std::endl;
-	return (os);
+		std::cout << "impossible" << std::endl;
+	//Conversiont to int
+	std::cout << "int: ";
+	int i = static_cast<int>(value);
+	if (type == char_type)
+		std::cout << static_cast<int>(_str[0]) << std::endl;
+	else if (type == unknown_type)
+		std::cout << "impossible" << std::endl;
+	else {
+		if (value >= 2147483648.0 || value <= -2147483649.0 || std::isnan(value))
+			std::cout << "impossible" << std::endl;
+		else
+			std::cout << i << std::endl;
+	}
+	//Conversion to float
+	std::cout << "float: ";
+	if (type == unknown_type)
+		std::cout << "impossible" << std::endl;
+	else {
+		std::cout << static_cast<float>(value);
+		if (static_cast<float>(value) == static_cast<int>(value))
+			std::cout << ".0";
+		std::cout << 'f' << std::endl;
+	}
+	//Conversion to double
+	std::cout << "double: ";
+	if (type == unknown_type)
+		std::cout << "impossible" << std::endl;
+	else {
+		std::cout << value;
+		if (value == static_cast<int>(value))
+			std::cout << ".0";
+		std::cout << std::endl;
+	}
+	
 }
