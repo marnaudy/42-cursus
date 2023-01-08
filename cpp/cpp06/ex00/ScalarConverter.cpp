@@ -105,7 +105,7 @@ void ScalarConverter::print() const {
 	if (type == char_type)
 		std::cout << '\'' <<_str << '\'' << std::endl;
 	if (type == int_type || type == float_type || type == double_type) {
-		if (value > 127.0 || value < 0.0 || std::isnan(value))
+		if (value > 127.0 || value <= -1.0 || std::isnan(value))
 			std::cout << "impossible" << std::endl;
 		else if (value >= 32.0 && value < 127.0)
 			std::cout << '\'' << static_cast<char>(value) << '\'' << std::endl;
@@ -116,7 +116,6 @@ void ScalarConverter::print() const {
 		std::cout << "impossible" << std::endl;
 	//Conversiont to int
 	std::cout << "int: ";
-	int i = static_cast<int>(value);
 	if (type == char_type)
 		std::cout << static_cast<int>(_str[0]) << std::endl;
 	else if (type == unknown_type)
@@ -125,11 +124,13 @@ void ScalarConverter::print() const {
 		if (value >= 2147483648.0 || value <= -2147483649.0 || std::isnan(value))
 			std::cout << "impossible" << std::endl;
 		else
-			std::cout << i << std::endl;
+			std::cout << static_cast<int>(value) << std::endl;
 	}
 	//Conversion to float
 	std::cout << "float: ";
-	if (type == unknown_type)
+	if (type == char_type)
+		std::cout << static_cast<float>(_str[0]) << ".0f" << std::endl;
+	else if (type == unknown_type)
 		std::cout << "impossible" << std::endl;
 	else {
 		std::cout << static_cast<float>(value);
@@ -139,7 +140,9 @@ void ScalarConverter::print() const {
 	}
 	//Conversion to double
 	std::cout << "double: ";
-	if (type == unknown_type)
+	if (type == char_type)
+		std::cout << static_cast<double>(_str[0]) << ".0" << std::endl;
+	else if (type == unknown_type)
 		std::cout << "impossible" << std::endl;
 	else {
 		std::cout << value;
