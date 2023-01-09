@@ -6,12 +6,12 @@
 #    By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 17:15:05 by marnaudy          #+#    #+#              #
-#    Updated: 2023/01/09 06:39:45 by marnaudy         ###   ########.fr        #
+#    Updated: 2023/01/09 07:54:29 by marnaudy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME		=	span
+NAME		=	ex01
 
 SRCS		=	main.cpp \
 				Span.cpp

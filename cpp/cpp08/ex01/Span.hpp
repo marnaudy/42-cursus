@@ -16,7 +16,7 @@ public:
 	void addNumber(int toAdd);
 	template <typename InputIterator>
 	void addNumber(InputIterator first, InputIterator last) {
-		if (std::distance(first, last) + _vec.size() > _max_size)
+		if (std::distance(first, last) + _vec.size() > _maxSize)
 			throw SpanNoRoomException();
 		_vec.insert(_vec.end(), first, last);
 	}
@@ -32,7 +32,7 @@ public:
 			virtual const char *what() const throw();
 	};
 private:
-	unsigned int _max_size;
+	unsigned int _maxSize;
 	std::vector<int> _vec;
 };
 

@@ -1,23 +1,23 @@
 #include "Span.hpp"
 
-Span::Span() : _max_size(0) {}
+Span::Span() : _maxSize(0) {}
 
-Span::Span(unsigned int n) : _max_size(n) {}
+Span::Span(unsigned int n) : _maxSize(n) {}
 
-Span::Span(const Span &other) : _max_size(other._max_size), _vec(other._vec) {}
+Span::Span(const Span &other) : _maxSize(other._maxSize), _vec(other._vec) {}
 
 Span::~Span() {}
 
 //Operations
 
 Span &Span::operator=(const Span &rhs) {
-	_max_size = rhs._max_size;
+	_maxSize = rhs._maxSize;
 	_vec = rhs._vec;
 	return (*this);
 }
 
 void Span::addNumber(int toAdd) {
-	if (_vec.size() == _max_size)
+	if (_vec.size() == _maxSize)
 		throw Span::SpanNoRoomException();
 	_vec.push_back(toAdd);
 }

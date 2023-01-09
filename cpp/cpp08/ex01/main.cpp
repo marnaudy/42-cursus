@@ -3,12 +3,12 @@
 #include <deque>
 
 int main() {
-	Span sp_empty;
+	Span spEmpty;
 	Span sp(25);
 
 	try {
-		sp_empty.addNumber(6);
-		sp_empty.addNumber(5);
+		spEmpty.addNumber(6);
+		spEmpty.addNumber(5);
 	} catch(std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
@@ -19,13 +19,13 @@ int main() {
 		std::cout << e.what() << std::endl;
 	}
 	try {
-		std::cout << sp_empty.shortestSpan() << std::endl;
-		std::cout << sp_empty.longestSpan() << std::endl;
+		std::cout << spEmpty.shortestSpan() << std::endl;
+		std::cout << spEmpty.longestSpan() << std::endl;
 	} catch(std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 	
-	std::cout << std::endl;
+	std::cout << std::endl << "Testing small span" << std::endl;
 	sp.addNumber(6);
 	sp.addNumber(3);
 	sp.addNumber(17);
@@ -46,4 +46,12 @@ int main() {
 	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 
+	std::cout << std::endl << "Testing big span" << std::endl;
+	Span spBig(100000);
+	std::deque<int> deqBig(99998, 42);
+	spBig.addNumber(0);
+	spBig.addNumber(deqBig.begin(), deqBig.end());
+	spBig.addNumber(3);
+	std::cout << spBig.shortestSpan() << std::endl;
+	std::cout << spBig.longestSpan() << std::endl;
 }
