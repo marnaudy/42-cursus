@@ -22,10 +22,13 @@ void Span::addNumber(int toAdd) {
 	_vec.push_back(toAdd);
 }
 
-unsigned int Span::shortestSpan() const {
+unsigned int Span::shortestSpan() {
 	if (_vec.size() < 2)
 		throw Span::SpanTooSmallException();
-	return (0);
+	std::sort(_vec.begin(), _vec.end());
+	std::vector<int> res(_vec);
+	std::adjacent_difference(_vec.begin(), _vec.end(), res.begin());
+	return (*std::min_element(++res.begin(), res.end()));
 }
 
 unsigned int Span::longestSpan() const {

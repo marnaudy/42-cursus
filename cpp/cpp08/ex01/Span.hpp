@@ -4,6 +4,7 @@
 #include <vector>
 #include <iterator>
 #include <algorithm>
+#include <numeric>
 
 class Span {
 public:
@@ -20,7 +21,7 @@ public:
 			throw SpanNoRoomException();
 		_vec.insert(_vec.end(), first, last);
 	}
-	unsigned int shortestSpan() const;
+	unsigned int shortestSpan();
 	unsigned int longestSpan() const;
 	//Exceptions
 	class SpanNoRoomException : public std::exception {
