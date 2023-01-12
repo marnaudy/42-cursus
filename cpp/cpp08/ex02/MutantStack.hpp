@@ -6,42 +6,25 @@
 template <typename T>
 class MutantStack : public std::stack<T> {
 public:
-	class iterator {
-	public:
-		iterator() {}
-		iterator(const iterator &other) {}
-		~iterator() {}
-
-		iterator &operator=(const iterator &rhs) {
-			return (*this);
-		}
-		bool operator==(const iterator &rhs) {
-			return (true);
-		}
-		bool operator!=(const iterator &rhs) {
-
-		}
-		T &operator*() {
-			
-		}
-		iterator &operator++() {
-			
-		}
-		iterator &operator--() {
-			
-		}
-		iterator operator++(int) {
-			
-		}
-		iterator operator--(int) {
-
-		}
-	};
+	MutantStack<T>() : std::stack<T>() {}
+	MutantStack<T>(const MutantStack &other) : std::stack<T>(other) {}
+	~MutantStack<T>() {}
+	MutantStack<T> &operator=(const MutantStack<T> &rhs) {
+		std::stack<T>::c = rhs.c;
+	}
+	typedef typename std::stack<T>::container_type::iterator iterator;
+	typedef typename std::stack<T>::container_type::const_iterator const_iterator;
 	iterator begin() {
-
+		return (std::stack<T>::c.begin());
+	}
+	const_iterator begin() const{
+		return (std::stack<T>::c.begin());
 	}
 	iterator end() {
-		
+		return (std::stack<T>::c.end());
+	}
+	const_iterator end() const{
+		return (std::stack<T>::c.end());
 	}
 };
 

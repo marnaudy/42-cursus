@@ -6,12 +6,12 @@
 #    By: marnaudy <marnaudy@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 17:15:05 by marnaudy          #+#    #+#              #
-#    Updated: 2023/01/10 07:32:39 by marnaudy         ###   ########.fr        #
+#    Updated: 2023/01/12 07:33:50 by marnaudy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME		=	ex01
+NAME		=	ex02
 
 SRCS		=	main.cpp
 
